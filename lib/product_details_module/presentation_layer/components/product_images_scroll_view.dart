@@ -67,10 +67,7 @@ class FirstListView extends StatelessWidget {
                       width: 200,
                       height: double.infinity,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue,
-                          width: 2.0,
-                        ),
+
                         borderRadius: BorderRadius.circular(8.0),
                         image: DecorationImage(
                           image: AssetImage(
@@ -127,7 +124,7 @@ class SecondListView extends StatelessWidget {
                         duration: const Duration(milliseconds: 1000),
                         curve: Curves.bounceOut,
                       );
-                    }, /// change the list view when press on any small picture
+                    },
                     child: Container(
                       margin: const EdgeInsets.all(8.0),
                       width: 50,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slash_task/shared/service_locator.dart';
 
 import 'components/add_to_cart_component.dart';
 import 'components/name_salary_component.dart';
@@ -33,7 +34,7 @@ class ProductScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: BlocProvider(
-          create: (context) => ProductDetailsBloc()..add(SelectSpecificSizeEvent(index: 0)),
+          create: (context) => getIt<ProductDetailsBloc>()..add(GetProductDetailsEvent(currentProduct: 1))..add(SelectSpecificSizeEvent(index: 1)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

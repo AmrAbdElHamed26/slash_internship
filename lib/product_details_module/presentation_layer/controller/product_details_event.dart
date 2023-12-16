@@ -15,3 +15,14 @@ class SelectSpecificSizeEvent extends ProductDetailsEvent {
   List<Object?> get props => [index];
 
 }
+
+class GetProductDetailsEvent extends ProductDetailsEvent{
+  final int currentProduct;
+  const GetProductDetailsEvent({required this.currentProduct});
+
+  @override
+  List<Object?> get props => [currentProduct];
+
+
+}
+
