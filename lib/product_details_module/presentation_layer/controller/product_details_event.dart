@@ -26,3 +26,12 @@ class GetProductDetailsEvent extends ProductDetailsEvent{
 
 }
 
+
+class SelectSpecificMaterialEvent extends ProductDetailsEvent {
+
+  final int index;
+  const SelectSpecificMaterialEvent({required this.index});
+  @override
+  List<Object?> get props => [index];
+
+}

@@ -20,10 +20,16 @@ class ProductDetailsBloc
       final updatedState = state.copyWith(
         selectedSizeIndex: event.index,
       );
-
       emit(updatedState);
     });
 
+    on<SelectSpecificMaterialEvent>((event, emit) {
+      final updatedState = state.copyWith(
+        selectedMaterialIndex: event.index,
+      );
+
+      emit(updatedState);
+    });
 
     on<GetProductDetailsEvent>(_getProductDetails);
   }
@@ -32,7 +38,6 @@ class ProductDetailsBloc
       GetProductDetailsEvent event, Emitter<ProductDetailsState> emit) {
     final result = getProductDetailsUseCase.execute(event.currentProduct);
 
-    print("result is $result");
     emit(state.copyWith(
       currentProduct: result,
       productDetailsState: RequestState.loaded,
@@ -40,4 +45,6 @@ class ProductDetailsBloc
 
     return result;
   }
+
+
 }

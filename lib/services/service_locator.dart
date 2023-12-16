@@ -12,7 +12,7 @@ class ServicesLocator {
   void init() {
     /// blocs
 
-    getIt.registerFactory(() => ProductDetailsBloc(getIt()));
+    getIt.registerFactory<ProductDetailsBloc>(() => ProductDetailsBloc(getIt()));
 
     ///Use Cases
 

@@ -1,6 +1,9 @@
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:slash_task/product_details_module/presentation_layer/controller/product_details_bloc.dart';
+import 'package:slash_task/shared/enums.dart';
 import '../../../shared/dummy_product_deatils_data.dart';
 
 /// todo : change ui of the list view using Transform
@@ -18,12 +21,25 @@ class ProductImagesScrollView extends StatelessWidget {
       height: heightScreen * 0.4,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0),
-        child: Column(
-          children: [
-            FirstListView(scrollController: _scrollController),
-            SecondListView(widthScreen: widthScreen, scrollController: _scrollController),
-          ],
-        ),
+        child: BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
+  builder: (context, state) {
+    switch(state.productDetailsState){
+
+      case RequestState.loading:
+       return CircularProgressIndicator();
+      case RequestState.loaded:
+      return Column(
+        children: [
+          FirstListView(scrollController: _scrollController , images : state.currentProduct!.allImages),
+          SecondListView(widthScreen: widthScreen, scrollController: _scrollController, images : state.currentProduct!.allImages),
+        ],
+      );
+      case RequestState.error:
+        return CircularProgressIndicator();
+
+    }
+  },
+),
       ),
     );
   }
@@ -32,11 +48,11 @@ class ProductImagesScrollView extends StatelessWidget {
 class FirstListView extends StatelessWidget {
   const FirstListView({
     super.key,
-    required ScrollController scrollController,
+    required ScrollController scrollController, required this.images,
   }) : _scrollController = scrollController;
 
   final ScrollController _scrollController;
-
+  final List<String?>images  ;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -50,14 +66,14 @@ class FirstListView extends StatelessWidget {
               scrollDirection: Axis.horizontal,
 
               itemBuilder: (BuildContext context, int index) {
-                if (index < productDetails.allImages.length) {
+                if (index <images.length) {
                   return GestureDetector(
                     onTap: () {
 
                       showImageViewer(
                         context,
                         Image
-                            .asset(productDetails.allImages[index]!)
+                            .asset(images[index]!)
                             .image,
                         swipeDismissible: false,
                       );
@@ -71,7 +87,7 @@ class FirstListView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                         image: DecorationImage(
                           image: AssetImage(
-                              productDetails.allImages[index]!),
+                              images[index]!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -81,7 +97,7 @@ class FirstListView extends StatelessWidget {
                   return Container();
                 }
               },
-              itemCount: productDetails.allImages.length,
+              itemCount: images.length,
             ),
           ),
         ],
@@ -95,10 +111,12 @@ class SecondListView extends StatelessWidget {
     super.key,
     required this.widthScreen,
     required ScrollController scrollController,
+    required this.images,
   }) : _scrollController = scrollController;
 
   final double widthScreen;
   final ScrollController _scrollController;
+  final List<String?>images  ;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +134,7 @@ class SecondListView extends StatelessWidget {
             child:ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                if (index < productDetails.allImages.length) {
+                if (index < images.length) {
                   return GestureDetector(
                     onTap: () async {
                       _scrollController.animateTo(
@@ -131,12 +149,12 @@ class SecondListView extends StatelessWidget {
                       height: 50,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.blue,
+                          color: const Color(0xFFB8EE2E),
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                         image: DecorationImage(
-                          image: AssetImage(productDetails.allImages[index]!),
+                          image: AssetImage(images[index]!),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -146,7 +164,7 @@ class SecondListView extends StatelessWidget {
                   return Container();
                 }
               },
-              itemCount: productDetails.allImages.length,
+              itemCount:images.length,
             ),
 
           ),

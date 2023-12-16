@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slash_task/product_details_module/presentation_layer/product_screen.dart';
-import 'package:slash_task/shared/bloc_observer.dart';
-import 'package:slash_task/shared/service_locator.dart';
+import 'package:slash_task/services/bloc_observer.dart';
+import 'package:slash_task/services/service_locator.dart';
 import 'package:slash_task/shared/themes.dart';
 
 /// make comp of colors
