@@ -4,7 +4,7 @@
 
 This repository contains the code for the Product Details screen in the Slash App mobile application. The screen is implemented using the Clean Architecture pattern with BLoC for improved code maintainability and reusability, along with a responsive UI.
 
-[![Project Video](https://github.com/AmrAbdElHamed26/slash_internship/assets/86882938/d4ef5d8b-7d46-4f35-b411-1bc422e1a9e9)](https://drive.google.com/file/d/1FyPbtACNYj-iy8QwuTf8XO3WXL67zOMx/view?usp=sharing)  
+[![Project Video](https://github.com/AmrAbdElHamed26/slash_internship/assets/86882938/d4ef5d8b-7d46-4f35-b411-1bc422e1a9e9)](https://youtu.be/m0AqYRJbCsA?feature=shared)  
 [Watch the Demo Video](https://drive.google.com/file/d/1FyPbtACNYj-iy8QwuTf8XO3WXL67zOMx/view?usp=sharing)
 
 ## Architecture and Design Patterns
