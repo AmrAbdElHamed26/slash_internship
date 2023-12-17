@@ -41,6 +41,7 @@ dependencies:
   get_it: ^7.6.4
   flutter_staggered_animations: ^1.1.1
   scroll_snap_list: ^0.9.1
+  flutter_styled_toast: ^2.2.1
 
 dev_dependencies:
   flutter_test:

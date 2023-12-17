@@ -60,7 +60,7 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 if (pressed == true)
                   Padding(
                     padding: const EdgeInsets.only(left: 10 , right: 10 , top : 15 , bottom: 10),
-                    child: Text(state.currentProduct!.brandName , style: const TextStyle(color: Colors.white, fontSize: 16),),
+                    child: Text(state.currentProduct!.brandDescription , style: const TextStyle(color: Colors.white, fontSize: 16),),
                   ),
               ],
             ),

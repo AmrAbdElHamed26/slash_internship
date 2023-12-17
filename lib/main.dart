@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:slash_task/product_details_module/presentation_layer/product_screen.dart';
+import 'package:slash_task/product_details_module/presentation_layer/screens/all_productss_screen.dart';
+import 'package:slash_task/product_details_module/presentation_layer/screens/product_screen.dart';
 import 'package:slash_task/services/bloc_observer.dart';
 import 'package:slash_task/services/service_locator.dart';
 import 'package:slash_task/shared/themes.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: darkTheme ,
-      home: ProductScreen(),
+      home: AllProductScreen(),
     );
   }
 }

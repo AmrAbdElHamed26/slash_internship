@@ -9,13 +9,14 @@ class ProductDetails extends Equatable {
   final List<String?> allSizes;
   final List<String?> allMaterials;
 
-  final String brandImage, brandName;
+  final String brandImage, brandName , brandDescription;
 
   const ProductDetails(this.allImages, this.allSizes, this.allMaterials,
       {required this.productName,
       required this.productPrice,
       required this.brandImage,
-      required this.brandName});
+      required this.brandName,
+         required this.brandDescription,});
 
   @override
   List<Object?> get props => [
@@ -25,6 +26,7 @@ class ProductDetails extends Equatable {
         productName,
         productPrice,
         brandImage,
-        brandName
+        brandName,
+    brandDescription,
       ];
 }

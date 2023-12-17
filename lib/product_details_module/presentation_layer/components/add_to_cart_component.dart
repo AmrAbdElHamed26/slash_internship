@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
+import 'package:slash_task/product_details_module/domain_layer/entites/product_details.dart';
+import 'package:slash_task/product_details_module/presentation_layer/controller/product_details_bloc.dart';
+import 'package:slash_task/product_details_module/presentation_layer/screens/cart_sscreen.dart';
+import 'package:slash_task/shared/dummy_product_deatils_data.dart';
 
 
 class AddToCartComp extends StatefulWidget {
@@ -102,7 +108,9 @@ class _AddToCartCompState extends State<AddToCartComp> {
               ),
             ],
           ),
-          GestureDetector(
+          BlocBuilder<ProductDetailsBloc, ProductDetailsState>(
+  builder: (context, state) {
+    return GestureDetector(
             onTap: (){
               /// todo : when press this button i need to get min number(selected color , selected size , selected material ) this number will be the max quantity that can user add to his cart
               ///
@@ -111,6 +119,20 @@ class _AddToCartCompState extends State<AddToCartComp> {
 
               /// todo : go to next page and use bloc to get the data the i stored from the state class i have stored (select size and material index , and add the quantity) i didn't need to
               /// make new model i have stored the data that i selected before
+
+              if(quantity > 0 ){
+                showToast("Product added To Your Cart,Successfully" , context:context ,    curve: Curves.elasticOut,
+                  position: StyledToastPosition.bottom,
+                  backgroundColor: const Color(0x99000000),
+                  borderRadius: BorderRadius.circular(5.0),
+                );
+
+                /// add any data , change it when dealing with real data
+                myCart.add(CartItem(id: 123, productVariationId:123 , quantity: 1 , imagePath: state.currentProduct!.allImages[0]! , name: state.currentProduct!.productName));
+
+
+              }
+              
 
             },
             child: Padding(
@@ -130,7 +152,9 @@ class _AddToCartCompState extends State<AddToCartComp> {
                 ),
               ),
             ),
-          ),
+          );
+  },
+),
         ],
       ),
     );

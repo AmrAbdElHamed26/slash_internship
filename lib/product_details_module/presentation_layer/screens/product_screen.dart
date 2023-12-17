@@ -4,17 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slash_task/product_details_module/presentation_layer/components/product_description.dart';
 import 'package:slash_task/services/service_locator.dart';
 
-import 'components/add_to_cart_component.dart';
-import 'components/name_salary_component.dart';
-import 'components/product_images_scroll_view.dart';
-import 'components/select_material_component.dart';
-import 'components/select_size_componenet.dart';
-import 'controller/product_details_bloc.dart';
+import '../components/add_to_cart_component.dart';
+import '../components/name_salary_component.dart';
+import '../components/product_images_scroll_view.dart';
+import '../components/select_material_component.dart';
+import '../components/select_size_componenet.dart';
+import '../controller/product_details_bloc.dart';
 
 class ProductScreen extends StatelessWidget {
-   ProductScreen({Key? key}) : super(key: key);
+   ProductScreen({Key? key , required this.currentProduct}) : super(key: key);
 
 
+   final int currentProduct ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,15 +29,20 @@ class ProductScreen extends StatelessWidget {
             fontSize: 20,
           ),
         )),
-        leading: const Icon(
-          Icons.arrow_back_ios_new,
-          color: Colors.white,
+        leading: GestureDetector(
+          onTap: (){
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.white,
+          ),
         ),
       ),
       body: SingleChildScrollView(
         child: BlocProvider(
           create: (context) => getIt<ProductDetailsBloc>()
-            ..add(const GetProductDetailsEvent(currentProduct: 1))
+            ..add(GetProductDetailsEvent(currentProduct: currentProduct))
             ..add(const SelectSpecificSizeEvent(index: 0))..add(const SelectSpecificMaterialEvent(index: 0)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

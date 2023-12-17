@@ -23,34 +23,36 @@ class NameAndSalaryPart extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          state.currentProduct!.productName,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            state.currentProduct!.productName,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold),
+                            overflow: TextOverflow.clip,
+                            maxLines: 2,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          "EGP ${state.currentProduct!.productPrice}",
-                          style:
-                          const TextStyle(color: Colors.white, fontSize: 16),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "EGP ${state.currentProduct!.productPrice}",
+                            style:
+                            const TextStyle(color: Colors.white, fontSize: 16),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   GestureDetector(
                     onTap: (){
-                      /// To Do : i found that in original app if i press on this icon a lot of time then choose any item again this all pages is stacked
-                      /// Todo : the good idea is to use this line of code
-                      //Navigator.of(context).pop();
+                      Navigator.pop(context);
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

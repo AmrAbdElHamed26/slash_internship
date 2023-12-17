@@ -7,7 +7,6 @@ import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:slash_task/product_details_module/presentation_layer/controller/product_details_bloc.dart';
 import 'package:slash_task/shared/enums.dart';
 
-/// todo : change ui of the list view using Transform
 class ProductImagesScrollView extends StatelessWidget {
   ProductImagesScrollView({Key? key}) : super(key: key);
 
